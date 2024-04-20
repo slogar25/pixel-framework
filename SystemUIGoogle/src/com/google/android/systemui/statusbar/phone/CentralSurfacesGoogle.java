@@ -122,7 +122,6 @@ import com.android.systemui.statusbar.phone.StatusBarSignalPolicy;
 import com.android.systemui.statusbar.phone.StatusBarTouchableRegionManager;
 import com.android.systemui.statusbar.phone.ongoingcall.OngoingCallController;
 import com.android.systemui.statusbar.policy.BatteryController;
-import com.android.systemui.statusbar.policy.BurnInProtectionController;
 import com.android.systemui.statusbar.policy.ConfigurationController;
 import com.android.systemui.statusbar.policy.DeviceProvisionedController;
 import com.android.systemui.statusbar.policy.ExtensionController;
@@ -132,7 +131,6 @@ import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.statusbar.window.StatusBarWindowController;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
-import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.kotlin.JavaAdapter;
 import com.android.systemui.util.WallpaperController;
 import com.android.systemui.util.concurrency.DelayableExecutor;
@@ -279,11 +277,8 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             AlternateBouncerInteractor alternateBouncerInteractor,
             UserTracker userTracker,
             Provider<FingerprintManager> fingerprintManager,
-            TunerService tunerService,
             ActivityStarter activityStarter,
             SceneContainerFlags sceneContainerFlags,
-            SysUiState sysUiState,
-            BurnInProtectionController burnInProtectionController,
             Optional<ReverseChargingViewController> reverseChargingViewControllerOptional,
             WallpaperNotifier wallpaperNotifier,
             SmartSpaceController smartSpaceController
@@ -303,10 +298,10 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 pluginManager, shadeController, windowRootViewVisibilityInteractor, statusBarKeyguardViewManager, viewMediatorCallback, initController, timeTickHandler, 
                 pluginDependencyProvider, extensionController, userInfoControllerImpl, phoneStatusBarPolicy, keyguardIndicationControllerGoogle, demoModeController, 
                 notificationShadeDepthControllerLazy, statusBarTouchableRegionManager, notificationIconAreaController, brightnessSliderFactory, 
-                screenOffAnimationController, wallpaperController, statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController, featureFlags, 
+                screenOffAnimationController, wallpaperController, statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController, featureFlags,
                 keyguardUnlockAnimationController, delayableExecutor, messageRouter, wallpaperManager, startingSurfaceOptional, activityLaunchAnimator, jankMonitor, 
                 deviceStateManager, wiredChargingRippleController, dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, lightRevealScrim, 
-                alternateBouncerInteractor, userTracker, fingerprintManager, tunerService, activityStarter, sceneContainerFlags, sysUiState, burnInProtectionController);
+                alternateBouncerInteractor, userTracker, fingerprintManager, activityStarter, sceneContainerFlags);
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override
