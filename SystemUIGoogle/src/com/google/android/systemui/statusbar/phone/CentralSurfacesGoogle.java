@@ -131,7 +131,6 @@ import com.android.systemui.statusbar.policy.UserInfoControllerImpl;
 import com.android.systemui.statusbar.policy.UserSwitcherController;
 import com.android.systemui.statusbar.window.StatusBarWindowController;
 import com.android.systemui.statusbar.window.StatusBarWindowStateController;
-import com.android.systemui.tuner.TunerService;
 import com.android.systemui.util.kotlin.JavaAdapter;
 import com.android.systemui.util.WallpaperController;
 import com.android.systemui.util.concurrency.DelayableExecutor;
@@ -145,6 +144,7 @@ import com.google.android.systemui.dreamliner.DockObserver;
 import com.google.android.systemui.reversecharging.ReverseChargingViewController;
 import com.google.android.systemui.smartspace.SmartSpaceController;
 import com.google.android.systemui.statusbar.KeyguardIndicationControllerGoogle;
+import com.android.systemui.statusbar.policy.FlashlightController;
 
 import java.util.Optional;
 import java.util.concurrent.Executor;
@@ -167,6 +167,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
     private final SmartSpaceController mSmartSpaceController;
     private final NotificationLockscreenUserManagerGoogle mNotificationLockscreenUserManagerGoogle;
     private final DockObserver mDockObserver;
+    private FlashlightController mFlashlightController;
 
     private long mAnimStartTime;
     private int mReceivingBatteryLevel;
@@ -224,6 +225,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             NavigationBarController navigationBarController,
             AccessibilityFloatingMenuController accessibilityFloatingMenuController,
             Lazy<AssistManager> assistManagerLazy,
+            FlashlightController flashlightController,
             ConfigurationController configurationController,
             NotificationShadeWindowController notificationShadeWindowController,
             Lazy<NotificationShadeWindowViewController> notificationShadeWindowViewControllerLazy,
@@ -281,7 +283,6 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
             AlternateBouncerInteractor alternateBouncerInteractor,
             UserTracker userTracker,
             Provider<FingerprintManager> fingerprintManager,
-            TunerService tunerService,
             ActivityStarter activityStarter,
             SceneContainerFlags sceneContainerFlags,
             SysUiState sysUiState,
@@ -299,7 +300,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 javaAdapter, uiBgExecutor, shadeSurface, notificationMediaManager, notificationLockscreenUserManagerGoogle, remoteInputManager, 
                 quickSettingsController, userSwitcherController, batteryController, colorExtractor, screenLifecycle, wakefulnessLifecycle, 
                 powerInteractor, statusBarStateController, bubblesOptional, noteTaskControllerLazy, deviceProvisionedController, 
-                navigationBarController, accessibilityFloatingMenuController, assistManagerLazy, configurationController, notificationShadeWindowController, 
+                navigationBarController, accessibilityFloatingMenuController, assistManagerLazy, flashlightController, configurationController, notificationShadeWindowController, 
                 notificationShadeWindowViewControllerLazy, notificationStackScrollLayoutController, notificationPresenterLazy, notificationActivityStarterLazy, 
                 notifLaunchAnimatorControllerProvider, dozeParameters, scrimController, biometricUnlockControllerLazy, authRippleController, 
                 dozeServiceHost, backActionInteractor, powerManager, dozeScrimController, volumeComponent, commandQueue, commandQueueCallbacksLazy, 
@@ -309,7 +310,7 @@ public class CentralSurfacesGoogle extends CentralSurfacesImpl {
                 screenOffAnimationController, wallpaperController, statusBarHideIconsForBouncerManager, lockscreenShadeTransitionController, featureFlags, 
                 keyguardUnlockAnimationController, delayableExecutor, messageRouter, wallpaperManager, startingSurfaceOptional, activityLaunchAnimator, jankMonitor, 
                 deviceStateManager, wiredChargingRippleController, dreamManager, cameraLauncherLazy, lightRevealScrimViewModelLazy, lightRevealScrim, 
-                alternateBouncerInteractor, userTracker, fingerprintManager, tunerService, activityStarter, sceneContainerFlags, sysUiState, burnInProtectionController);
+                alternateBouncerInteractor, userTracker, fingerprintManager, activityStarter, sceneContainerFlags, sysUiState, burnInProtectionController);
         mContext = context;
         mBatteryStateChangeCallback = new BatteryController.BatteryStateChangeCallback() {
             @Override

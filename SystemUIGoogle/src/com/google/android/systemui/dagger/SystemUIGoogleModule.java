@@ -41,7 +41,6 @@ import com.android.systemui.demomode.DemoModeController;
 import com.android.systemui.dock.DockManager;
 import com.android.systemui.doze.DozeHost;
 import com.android.systemui.dump.DumpManager;
-import com.android.systemui.lineage.LineageModule;
 import com.android.systemui.media.dagger.MediaModule;
 import com.android.systemui.navigationbar.gestural.GestureModule;
 import com.android.systemui.plugins.BcSmartspaceDataPlugin;
@@ -148,8 +147,7 @@ import dagger.Lazy;
         AssistModule.class,
         ElmyraModule.class,
         ColumbusModule.class,
-        SystemUIGooglePolicyModule.class,
-        LineageModule.class
+        SystemUIGooglePolicyModule.class
 })
 
 public abstract class SystemUIGoogleModule {
